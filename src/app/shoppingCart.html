@@ -1,0 +1,119 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+
+<div id = background>
+  
+  <div style = "text-align: center">
+    <h1 class = "myfont" >
+      Welcome to Mr.Miyagi's {{ title }}!
+    </h1>
+  </div>
+  
+  
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class = "form-group">
+      <p class = "orderfont">First Name </p>
+      <input type = "text" pattern="[a-zA-Z\'\-]*" minlength="2"
+        required [(ngModel)]="firstName" name="firstName" #firstNameModel="ngModel" (ngModelChange) = "toFalse()">
+        
+
+    </div>
+    <div class = "form-group">
+        <p class = "orderfont">Last Name</p>
+        <input type = "text" pattern="[a-zA-Z\'\-]*" minlength="2"
+          required [(ngModel)]="lastName" name="lastName" #lastNameModel="ngModel" (ngModelChange) = "toFalse()">
+  
+    </div>
+    <div class = "form-group">
+        <p class = "orderfont">Address</p>
+        <input type = "text" pattern="[a-zA-Z0-9\'\-\ ]*" minlength="8"
+          required [(ngModel)]="address" name="address" #addressModel="ngModel" (ngModelChange) = "toFalse()">
+    
+    </div>
+    <button class = "btn btn-primary" id = 'onSubmit'>Submit Address</button>
+    <br>
+    <p *ngIf="firstNameModel?.errors?.required && submitted">This field is required.</p> 
+    <p *ngIf="firstNameModel?.errors?.pattern && submitted">Name is not valid.</p>
+    <p *ngIf="firstNameModel?.errors?.minlength && submitted">This entry must have at least two characters.</p>   
+    <p *ngIf="lastNameModel?.errors?.required && submitted">This field is required.</p>
+    <p *ngIf="lastNameModel?.errors?.pattern && submitted">Name is not valid.</p>
+    <p *ngIf="lastNameModel?.errors?.minlength && submitted">This entry must have at least two characters.</p>
+    <p *ngIf="addressModel?.errors?.required && submitted">This field is required.</p>
+    <p *ngIf="addressModel?.errors?.pattern && submitted">Address is not valid.</p>
+    <p *ngIf="addressModel?.errors?.minlength && submitted">Not an address</p> 
+  </form>
+
+  <br>
+  <br>
+  <form #f="ngForm" (ngSubmit)="addItem(f)" id = "katana_form" style="border-block-color: rgb(217, 0, 255)">
+      <select name = "katana" ngModel>
+        <!--dsiabled = "true" makes it-->
+        <option disabled= "true" selected = "selected" [ngValue]="null">Please select an item</option>
+        <!--[VALUE] square brackets makes it complete the value dynamically, denis it from literally reading it a string
+        Value only takes string properties, ngValue takes anything-->
+        <option *ngFor = "let item of items" [ngValue] ="item">{{item.item}}</option>
+      </select>
+        <label for="quantity">Qty</label>
+        <input  type ="number" name ="quantity" id="quantity" min="0" max="20" oninput="getTotal_1()" ngModel>
+        <span id = "sideView" class = "subtotal"></span>
+    <ul>
+    <button class="btn btn-primary" id = 'addItem'>Add items</button>
+    </ul>
+  </form>
+<br>
+<br>
+<br>
+<div id = "right">
+  <h4 style="text-align:center" class = "orderfont">Order Details</h4>
+  <h5 style="text-align:center" class="orderfont" name="fullAddress"
+   *ngIf="!firstName?.errors && !lastName?.errors && !address.errors && submitted">{{fullAddress}}</h5>
+</div>
+  <div class = "table-responsive-md" id = "katana_cart">
+    <table>
+      <tr class = "orderfont">
+          <th width = "10%">Katana(s)</th>
+          <th width = "10%">Qty</th>
+          <th width = "10%">Price(USD)</th>
+          <th width = "10%">Amount</th>
+          <th width = "10%"></th>
+      </tr>
+      <tr *ngFor="let order of orders;let i = index" class = "detailsfont">
+        <th>{{ order.item }}</th>
+        <th>{{ order.qty }}</th>
+        <th>${{ order.price}}</th>
+        <th>${{ order.amount}}</th>
+        <th>
+             <input type='button' value='delete' (click)=removeItem(i)>
+        </th>
+      </tr>
+      <tr class = "orderfont"> 
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr class = "orderfont">
+        <td >Sub-Total:</td>
+        <td></td>
+        <td></td>
+        <td>${{total}}</td>
+      </tr>
+      <tr class = "orderfont"> 
+        <td>Taxes:</td>
+        <td></td>
+        <td></td>
+        <td>${{taxes}}</td>
+      </tr>
+      <tr class = "orderfont">
+          <td>Grand Total (USD):</td>
+          <td></td>
+          <td></td>
+          <td>${{grandTotal}}</td>
+      </tr>
+    </table> 
+  </div>
+ 
+
+</div>
+
+<router-outlet></router-outlet>
