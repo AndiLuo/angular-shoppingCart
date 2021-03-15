@@ -7,9 +7,9 @@ import {NgForm} from '@angular/forms';
 })
 export class AppComponent {
   title = 'Katana Vendor';
-  items = [{'item':'Cursed Blade Muramasa', 'price':10340.00}, 
+  items = [{'item':'Muramasa', 'price':10340.00}, 
   {'item':`Onikiri and Ubadachi`, 'price':3200.00},
-  {'item':'ChunChunMaru', 'price':200.00},
+  {'item':'Numero Uno Katana', 'price':200.00},
   {'item':'Kusai Blade', 'price':1.99}];
 
   orders = [];
