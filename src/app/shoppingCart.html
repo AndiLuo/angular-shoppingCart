@@ -15,20 +15,20 @@
     <div class = "form-group">
       <p class = "orderfont">First Name </p>
       <input type = "text" pattern="[a-zA-Z\'\-]*" minlength="2" id="detail"
-        required [(ngModel)]="firstName" placeholder = "Name" #firstNameModel="ngModel" (ngModelChange) = "toFalse()">
+        required [(ngModel)]="firstName" name= "First-Name" placeholder = "Name" #firstNameModel="ngModel" (ngModelChange) = "toFalse()">
         
 
     </div>
     <div class = "form-group">
         <p class = "orderfont">Last Name</p>
         <input placeholder = "Last Name" type = "text" pattern="[a-zA-Z\'\-]*" minlength="2" id="detail"
-          required [(ngModel)]="lastName"  #lastNameModel="ngModel" (ngModelChange) = "toFalse()">
+          required [(ngModel)]="lastName" name="Last-Name" #lastNameModel="ngModel" (ngModelChange) = "toFalse()">
   
     </div>
     <div class = "form-group">
         <p class = "orderfont">Address</p>
         <input type = "text" pattern="[a-zA-Z0-9\'\-\ ]*" minlength="8" id="detail"
-          required [(ngModel)]="address" placeholder = "Address" #addressModel="ngModel" (ngModelChange) = "toFalse()">
+          required [(ngModel)]="address" name = "Address" placeholder = "Address" #addressModel="ngModel" (ngModelChange) = "toFalse()">
     
     </div>
     <button class = "btn btn-primary" id = 'onSubmit'>Submit Address</button>
