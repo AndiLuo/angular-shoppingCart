@@ -34,7 +34,7 @@ html {
  #background {
    position: relative;
    background-size: 150%;
-   height:100vh;
+   height:110vh;
    background-image: url("katana.gif");
  }
 
@@ -50,7 +50,8 @@ html {
   font-family: monospace;
   color: white;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 1vw;
+  
 }
 
 #katana_form{
@@ -58,13 +59,37 @@ html {
   display: block;
   width: 300px;
   border: black;
-  font-size: 16px;
   line-height: 25px;
   background-color: transparent;
   border-radius: 2px;
   margin: 8px auto;
-  text-decoration: none;
   position: absolute;
+  
+}
+
+#detail{
+  color:  white;
+  display: block;
+  width: 30%;
+  border: 2px solid purple;
+  line-height: 25px;
+  background-color: transparent;
+  border-radius: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+#checkout{
+  color:  white;
+  display: block;
+  width: 100%;
+  border: 2px solid purple;
+  line-height: 25px;
+  background-color: transparent;
+  border-radius: 2px;
+  border-radius: 4px;
+  cursor: pointer;
 
 }
 

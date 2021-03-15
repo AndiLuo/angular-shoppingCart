@@ -11,23 +11,23 @@
   </div>
   
   
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
     <div class = "form-group">
       <p class = "orderfont">First Name </p>
-      <input type = "text" pattern="[a-zA-Z\'\-]*" minlength="2"
+      <input type = "text" pattern="[a-zA-Z\'\-]*" minlength="2" id="detail"
         required [(ngModel)]="firstName" name="firstName" #firstNameModel="ngModel" (ngModelChange) = "toFalse()">
         
 
     </div>
     <div class = "form-group">
         <p class = "orderfont">Last Name</p>
-        <input type = "text" pattern="[a-zA-Z\'\-]*" minlength="2"
+        <input type = "text" pattern="[a-zA-Z\'\-]*" minlength="2" id="detail"
           required [(ngModel)]="lastName" name="lastName" #lastNameModel="ngModel" (ngModelChange) = "toFalse()">
   
     </div>
     <div class = "form-group">
         <p class = "orderfont">Address</p>
-        <input type = "text" pattern="[a-zA-Z0-9\'\-\ ]*" minlength="8"
+        <input type = "text" pattern="[a-zA-Z0-9\'\-\ ]*" minlength="8" id="detail"
           required [(ngModel)]="address" name="address" #addressModel="ngModel" (ngModelChange) = "toFalse()">
     
     </div>
@@ -46,16 +46,17 @@
 
   <br>
   <br>
-  <form #f="ngForm" (ngSubmit)="addItem(f)" id = "katana_form" style="border-block-color: rgb(217, 0, 255)">
-      <select name = "katana" ngModel>
+  <form #f="ngForm" (ngSubmit)="addItem(f)" id = "detail" style="border-block-color: rgb(217, 0, 255)">
+      <select name = "katana" ngModel id="detail" style="width: 100%">
         <!--dsiabled = "true" makes it-->
         <option disabled= "true" selected = "selected" [ngValue]="null">Please select an item</option>
         <!--[VALUE] square brackets makes it complete the value dynamically, denis it from literally reading it a string
         Value only takes string properties, ngValue takes anything-->
         <option *ngFor = "let item of items" [ngValue] ="item">{{item.item}}</option>
       </select>
-        <label for="quantity">Qty</label>
-        <input  type ="number" name ="quantity" id="quantity" min="0" max="20" oninput="getTotal_1()" ngModel>
+      <p>Please select an item</p>
+        <input type ="number" name ="quantity" id="quantity" min="0" max="20" oninput="getTotal_1()" ngModel>
+        <label for="quantity">Quantity</label>
         <span id = "sideView" class = "subtotal"></span>
     <ul>
     <button class="btn btn-primary" id = 'addItem'>Add items</button>
@@ -64,7 +65,8 @@
 <br>
 <br>
 <br>
-<div id = "right">
+<div id="checkout">
+<div>
   <h4 style="text-align:center" class = "orderfont">Order Details</h4>
   <h5 style="text-align:center" class="orderfont" name="fullAddress"
    *ngIf="!firstName?.errors && !lastName?.errors && !address.errors && submitted">{{fullAddress}}</h5>

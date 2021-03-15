@@ -84,7 +84,7 @@ export class AppComponent {
 
         for(let num=0 ;num < this.orders.length; num++){
           this.total += this.orders[num].amount;
-          this.taxes = (this.total * 0.07);
+          this.taxes = (this.total * 0.12);
           this.grandTotal = (this.total + this.taxes);
           }
         }
